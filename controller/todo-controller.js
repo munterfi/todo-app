@@ -3,7 +3,8 @@ import {todoStore} from '../services/todo-store.js'
 export class TodoController {
 
     getTodos = async (req, res) => {
-        res.json((await todoStore.all() || []))
+        // res.json((await todoStore.all() || []))
+        res.render("todos", {data: await todoStore.all() || [], dark: true});
     };
 
     createTodo = async (req, res) => {
