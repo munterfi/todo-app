@@ -1,0 +1,12 @@
+<h1>Edit Todo</h1>
+<form action="/todos" method="post">
+    <label for="title">Title</label>
+    <input id='title' name='title' type='text' value="{{data.title}}">
+    <label for="importance">Importance</label>
+    <input id='importance' name='importance' type='number' value="{{data.importance}}">
+    <label for="date">Due date</label>
+    <input id='date' name='date' type='date' value="{{data.dueDate}}">
+    <label for="description">Description</label>
+    <input id='description' name='description' type='text' value="{{data.description}}">
+    <input type='submit' value='Update'>
+</form>
