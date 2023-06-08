@@ -1,0 +1,9 @@
+<h1>Todos</h1>
+<ul>
+    {{#each data}}
+        <li><p>{{this.title}}, {{this.dueDate}}, {{this.importance}}, {{this.description}}</p></li>
+    {{/each}}
+</ul>
+<form action='/todos/create' method='get'>
+    <input type='submit' value='Create todo'>
+</form>
