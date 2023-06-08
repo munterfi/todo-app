@@ -7,13 +7,12 @@ import exphbs from 'express-handlebars';
 import {indexRoutes} from './routes/index-routes.js';
 import {helpers} from './utils/handlebar-util.js'
 import {sessionUserSettings} from './utils/session-middleware.index.js'
+import {todoRoutes} from "./routes/todo-routes.js";
 
 
 export const app = express();
 const hbs = exphbs.create({
-    extname: '.hbs',
-    defaultLayout: "default",
-    helpers: {
+    extname: '.hbs', defaultLayout: "default", helpers: {
         ...helpers
     }
 });
@@ -29,3 +28,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use("/", indexRoutes);
+app.use("/todos", todoRoutes);
