@@ -7,7 +7,7 @@ export class Todo {
         this.importance = importance;
         this.description = description;
         this.createdDate = new Date();
-        this.state = "OK";
+        this.state = "OPEN";
     }
 }
 

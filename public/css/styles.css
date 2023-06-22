@@ -1,0 +1,91 @@
+/* styles.css */
+
+.todo-list-header {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px; /* Adjust the value to set the desired space between rows */
+}
+
+.todo-list-header-upper-left {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    outline: 2px solid red;
+}
+
+.todo-list-header-upper-right {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    justify-self: end; /* Align content to the right side */
+    outline: 2px solid violet;
+}
+
+.todo-list-header-lower-left {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    outline: 2px solid orange;
+}
+
+.todo-list-header-lower-right {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    justify-self: end; /* Align content to the right side */
+    outline: 2px solid yellow;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px; /* Add a margin on top of the container */
+    gap: 10px; /* Adjust the value to set the desired space between todo items */
+}
+
+.todo-list-item {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "area-due-date area-title       area-importance area-edit-button"
+        "area-state    area-description area-importance area-edit-button";
+    background-color: #797979; /* Optional: Add background color to visually separate the todo items */
+    padding: 10px; /* Optional: Add padding to the todo items */
+}
+
+.todo-list-item-state {
+    grid-area: area-state;
+}
+
+.todo-list-item-title {
+    grid-area: area-title;
+}
+
+.todo-list-item-due-date {
+    grid-area: area-due-date;
+}
+
+.todo-list-item-importance {
+    grid-area: area-importance;
+}
+
+.todo-list-item-description {
+    grid-area: area-description;
+}
+
+.todo-list-item-edit {
+    grid-area: area-edit-button;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.custom-button {
+    background-color: #007bff; /* Optional: Add a background color to the button */
+    color: white; /* Optional: Set the text color of the button */
+    border: none; /* Optional: Remove the button border */
+    padding: 5px 10px; /* Optional: Add padding to the button */
+    cursor: pointer; /* Optional: Add a cursor pointer on hover */
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Optional: Change the background color on hover */
+}

@@ -1,12 +1,52 @@
 <h1>Todos</h1>
-<ul>
-    {{#each data}}
-        <li><p>{{this.title}}, {{this.dueDate}}, {{this.importance}}, {{this.description}}</p></li>
-        <form action='/todos/{{this._id}}' method='get'>
-            <input type='submit' value='Edit'>
-        </form>
-    {{/each}}
-</ul>
-<form action='/todos/create' method='get'>
-    <input type='submit' value='Create todo'>
+<form id="create" action="/todos/create" method="get">
+    <div class="todo-list-header">
+        <div class="todo-list-header-upper-left">
+            <input class="custom-button" type='submit' value='Create todo' name="createTodoButton">
+        </div>
+        <div class="todo-list-header-upper-right">
+            <input class="custom-button" type='submit' value='Toggle Style' name="toggleStyleButton">
+        </div>
+        <div class="todo-list-header-lower-left">
+            <input class="custom-button" type='submit' value='Name' name="byNameButton">
+            <input class="custom-button" type='submit' value='By Due Date' name="byDueDateButton">
+            <input class="custom-button" type='submit' value='By Creation Date' name="byCreationDateButton">
+            <input class="custom-button" type='submit' value='By Importance' name="byImportanceButton">
+        </div>
+        <div class="todo-list-header-lower-right">
+            <input class="custom-button" type='submit' value='Filter Completed' name="filterCompletedButton">
+        </div>
+    </div>
 </form>
+<div class="todo-list">
+    {{#each data}}
+        <div class="todo-list-item">
+            <div class="todo-list-item-state">
+                {{#if_eq this.state "DONE"}}
+                    <input class="todo-list-item-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
+                           checked
+                           disabled>
+                    <label class="todo-list-item-check-label" for="flexCheckCheckedDisabled">
+                        Completed
+                    </label>
+                {{/if_eq}}
+                {{#if_eq this.state "OPEN"}}
+                    <input class="todo-list-item-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
+                           disabled>
+                    <label class="todo-list-item-check-label" for="flexCheckCheckedDisabled">
+                        Open
+                    </label>
+                {{/if_eq}}
+            </div>
+            <div class="todo-list-item-title">{{this.title}}</div>
+            <div class="todo-list-item-due-date">{{this.dueDate}}</div>
+            <div class="todo-list-item-importance">{{this.importance}}</div>
+            <div class="todo-list-item-description">{{this.description}}</div>
+            <div class="todo-list-item-edit">
+                <form action='/todos/{{this._id}}' method='get'>
+                    <button class="custom-button" data-todo-id="{{this._id}}">Edit</button>
+                </form>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -4,12 +4,22 @@ export class TodoController {
 
     getTodos = async (req, res) => {
         // res.json((await todoStore.all() || []))
-        res.render("todo-list", {data: await todoStore.all() || [], dark: true});
+        res.render("todo-list", {data: await todoStore.all() || [], dark: false});
     };
 
     forwardCreate = async (req, res) => {
-        res.render("todo-create", {dark: true});
+        res.render("todo-create", {dark: false});
     };
+
+    /**
+    forwardCreate = async (req, res) => {
+        if (req.body.createTodoButton) {
+            res.render("todo-create", {dark: true});
+            return;
+        }
+        res.redirect("todos");
+    };
+     */
 
     createOrUpdateTodo = async (req, res) => {
         // check if only overview
@@ -45,7 +55,7 @@ export class TodoController {
 
     showTodo = async (req, res) => {
         const todo = await todoStore.get(req.params.id);
-        res.render("todo-edit", {data: todo, dark: true});
+        res.render("todo-edit", {data: todo, dark: false});
     };
 
     deleteTodo = async (req, res) => {
