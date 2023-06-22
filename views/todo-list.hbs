@@ -2,6 +2,9 @@
 <ul>
     {{#each data}}
         <li><p>{{this.title}}, {{this.dueDate}}, {{this.importance}}, {{this.description}}</p></li>
+        <form action='/todos/{{this._id}}' method='get'>
+            <input type='submit' value='Edit'>
+        </form>
     {{/each}}
 </ul>
 <form action='/todos/create' method='get'>

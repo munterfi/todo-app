@@ -23,6 +23,11 @@ export class TodoStore {
         return this.db.insert(todo);
     }
 
+    async update(id, updatedFields) {
+        await this.db.update({_id: id}, {$set: updatedFields});
+        return this.get(id);
+    }
+
     async delete(id) {
         await this.db.update({_id: id}, {$set: {"state": "DELETED"}});
         return this.get(id);

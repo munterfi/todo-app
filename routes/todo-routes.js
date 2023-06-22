@@ -5,7 +5,7 @@ import {todoController} from '../controller/todo-controller.js';
 
 router.get("/create", todoController.forwardCreate);
 router.get("/", todoController.getTodos);
-router.post("/", todoController.createTodo);
+router.post("/", todoController.createOrUpdateTodo);
 router.get("/:id/", todoController.showTodo);
 router.delete("/:id/", todoController.deleteTodo);
 
