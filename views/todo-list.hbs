@@ -39,7 +39,11 @@
                 {{/if_eq}}
             </div>
             <div class="todo-list-item-title">{{this.title}}</div>
-            <div class="todo-list-item-due-date">{{this.dueDate}}</div>
+            {{#if (is_due this.dueDate)}}
+                <div class="todo-list-item-due-date-over">{{days_until_due this.dueDate}}</div>
+            {{else}}
+                <div class="todo-list-item-due-date">{{days_until_due this.dueDate}}</div>
+            {{/if}}
             <div class="todo-list-item-importance">{{this.importance}}</div>
             <div class="todo-list-item-description">{{this.description}}</div>
             <div class="todo-list-item-edit">
@@ -50,3 +54,6 @@
         </div>
     {{/each}}
 </div>
+
+
+

@@ -63,6 +63,12 @@
     grid-area: area-due-date;
 }
 
+.todo-list-item-due-date-over {
+    /* Inherit styles from .todo-list-item-due-date */
+    grid-area: area-due-date;
+    color: red;
+}
+
 .todo-list-item-importance {
     grid-area: area-importance;
 }
