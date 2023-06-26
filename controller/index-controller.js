@@ -1,8 +1,7 @@
 export class IndexController {
     index(req, res) {
-        res.render("index", {data: req.userSettings.orderBy, dark: true});
-        // ?orderBy=createdBy
-        // req.userSettings.orderDirection
+        res.redirect("todos");
+        // res.render("index", {data: "Nothing here", dark: req.userSettings.darkMode});
     };
 }
 

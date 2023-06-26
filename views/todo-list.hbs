@@ -2,7 +2,7 @@
     <div class="todo-list-header">
         <form id="create" action="/todos/create" method="get">
         <div class="todo-list-header-upper-left">
-            <input class="custom-button" type='submit' value='Create Todo' name="createTodoButton">
+            <input class="custom-button" type='submit' value='Create Todo'>
         </div>
         </form>
         <div class="todo-list-header-upper-right">
@@ -56,10 +56,17 @@
             {{/if}}
             <div class="todo-list-item-importance">{{this.importance}}</div>
             <div class="todo-list-item-description">{{this.description}}</div>
-            <div class="todo-list-item-edit">
+            <div class="todo-list-item-controls">
+            <div class="form-container">
                 <form action='/todos/{{this._id}}' method='get'>
-                    <button class="custom-button" data-todo-id="{{this._id}}">Edit</button>
+                <button class="custom-button" data-todo-id="{{this._id}}">Edit</button>
                 </form>
+            </div>
+            <div class="form-container">
+                <form action='/todos/{{this._id}}' method='post'>
+                <button class="custom-button" data-todo-id="{{this._id}}">Delete</button>
+                </form>
+            </div>
             </div>
         </div>
     {{/each}}

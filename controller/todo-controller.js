@@ -2,7 +2,7 @@ import {todoStore} from '../services/todo-store.js'
 
 export class TodoController {
 
-    getTodos = async (req, res) => {
+    showTodoList = async (req, res) => {
         const todos = await todoStore.all() || [];
 
         const {
@@ -26,7 +26,7 @@ export class TodoController {
         });
     };
 
-    forwardCreate = async (req, res) => {
+    forwardToCreateTodo = async (req, res) => {
         res.render("todo-create", {darkMode: req.userSettings.darkMode});
     };
 
@@ -65,7 +65,16 @@ export class TodoController {
 
     showTodo = async (req, res) => {
         const todo = await todoStore.get(req.params.id);
+        if (!todo) {
+          res.status(404).render("404", {ressourceId: req.params.id, darkMode: req.userSettings.darkMode});
+          return;
+        }
         res.render("todo-edit", {data: todo, darkMode: req.userSettings.darkMode});
+    };
+
+    mapPostToDelete = async (req, res) => {
+      await todoStore.delete(req.params.id)
+      res.redirect("/todos");
     };
 
     deleteTodo = async (req, res) => {
@@ -74,6 +83,8 @@ export class TodoController {
 }
 
 const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) => {
+    todos = todos.filter((todo) => todo.state !== "DELETED");
+
     if (filterCompleted) {
       todos = todos.filter((todo) => todo.state === "OPEN");
     }

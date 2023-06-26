@@ -3,6 +3,7 @@ export const sessionUserSettings = (req, res, next) => {
     const {orderBy, orderDescending, filterCompleted, darkMode} = req.query;
 
     if (orderBy) {
+        // TODO: Toggle only works 2 times
         userSettings.orderDescending = userSettings.orderBy === orderBy ? !orderDescending : orderDescending;
         userSettings.orderBy = orderBy;
     }
