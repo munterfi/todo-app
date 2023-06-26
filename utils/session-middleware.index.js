@@ -1,27 +1,17 @@
 export const sessionUserSettings = (req, res, next) => {
-    const userSettings = req.session?.userSettings || {orderBy: 'title', orderDirection: -1, filterCompleted: 0, darkStyle: 0};
-    const {orderBy, orderDirection, filterCompleted, darkStyle} = req.query;
-
-    console.log("Before assignments:");
-    console.log("orderBy:", orderBy);
-    console.log("orderDirection:", orderDirection);
-    console.log("filterCompleted:", filterCompleted);
-    console.log("darkStyle:", darkStyle);
+    const userSettings = req.session?.userSettings || {orderBy: 'title', orderDescending: false, filterCompleted: false, darkMode: false};
+    const {orderBy, orderDescending, filterCompleted, darkMode} = req.query;
 
     if (orderBy) {
+        userSettings.orderDescending = userSettings.orderBy === orderBy ? !orderDescending : orderDescending;
         userSettings.orderBy = orderBy;
     }
-    if (orderDirection) {
-        userSettings.orderDirection = orderDirection;
-    }
     if (filterCompleted) {
-        userSettings.filterCompleted = filterCompleted;
+        userSettings.filterCompleted = filterCompleted === "true";
     }
-    if (darkStyle) {
-        userSettings.darkStyle = darkStyle;
+    if (darkMode) {
+        userSettings.darkMode = darkMode === "true";
     }
-
-    console.log("Got userSettings: ", { ...userSettings });
 
     req.userSettings = req.session.userSettings = userSettings;
     next();

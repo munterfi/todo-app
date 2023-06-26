@@ -1,23 +1,37 @@
 <h1>Todos</h1>
-<form id="create" action="/todos/create" method="get">
     <div class="todo-list-header">
+        <form id="create" action="/todos/create" method="get">
         <div class="todo-list-header-upper-left">
-            <input class="custom-button" type='submit' value='Create todo' name="createTodoButton">
+            <input class="custom-button" type='submit' value='Create Todo' name="createTodoButton">
         </div>
+        </form>
         <div class="todo-list-header-upper-right">
-            <input class="custom-button" type='submit' value='Toggle Style' name="toggleStyleButton">
+            <form id="todos" action="/todos/" method="get">
+            {{#if darkMode}}
+                <button class="custom-button" type="submit" value="false" name="darkMode">Bright Mode</button>
+            {{else}}
+                <button class="custom-button" type="submit" value="true" name="darkMode">Dark Mode</button>
+            {{/if}}
+            </form>
         </div>
         <div class="todo-list-header-lower-left">
-            <input class="custom-button" type='submit' value='Name' name="byNameButton">
-            <input class="custom-button" type='submit' value='By Due Date' name="byDueDateButton">
-            <input class="custom-button" type='submit' value='By Creation Date' name="byCreationDateButton">
-            <input class="custom-button" type='submit' value='By Importance' name="byImportanceButton">
+            <form id="todos-sort" action="/todos/" method="get">
+            <button class="custom-button" type="submit" value="title" name="orderBy">By Name</button>
+            <button class="custom-button" type="submit" value="dueDate" name="orderBy">By Due Date</button>
+            <button class="custom-button" type="submit" value="createDate" name="orderBy">By Creation Date</button>
+            <button class="custom-button" type="submit" value="importance" name="orderBy">By Importance</button>
+            </form>
         </div>
         <div class="todo-list-header-lower-right">
-            <input class="custom-button" type='submit' value='Filter Completed' name="filterCompletedButton">
+            <form id="todos-filter" action="/todos/" method="get">
+            {{#if filterCompleted}}
+                <button class="custom-button" type="submit" value="false" name="filterCompleted">Show All</button>
+            {{else}}
+                <button class="custom-button" type="submit" value="true" name="filterCompleted">Filter Completed</button>
+            {{/if}}
+            </form>
         </div>
     </div>
-</form>
 <div class="todo-list">
     {{#each data}}
         <div class="todo-list-item">

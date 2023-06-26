@@ -7,37 +7,28 @@ export class TodoController {
 
         const {
             orderBy,
-            orderDirection,
+            orderDescending,
             filterCompleted,
-            darkStyle
+            darkMode
           } = req.userSettings;
 
         const sortedAndFilteredTodos = sortAndFilterTodos(
         todos,
         orderBy,
-        orderDirection,
+        orderDescending,
         filterCompleted
         );
     
         res.render("todo-list", {
         data: sortedAndFilteredTodos,
-        dark: darkStyle
+        filterCompleted: filterCompleted,
+        darkMode: darkMode
         });
     };
 
     forwardCreate = async (req, res) => {
-        res.render("todo-create", {dark: false});
+        res.render("todo-create", {darkMode: req.userSettings.darkMode});
     };
-
-    /**
-    forwardCreate = async (req, res) => {
-        if (req.body.createTodoButton) {
-            res.render("todo-create", {dark: true});
-            return;
-        }
-        res.redirect("todos");
-    };
-     */
 
     createOrUpdateTodo = async (req, res) => {
         // check if only overview
@@ -74,7 +65,7 @@ export class TodoController {
 
     showTodo = async (req, res) => {
         const todo = await todoStore.get(req.params.id);
-        res.render("todo-edit", {data: todo, dark: false});
+        res.render("todo-edit", {data: todo, darkMode: req.userSettings.darkMode});
     };
 
     deleteTodo = async (req, res) => {
@@ -82,7 +73,7 @@ export class TodoController {
     };
 }
 
-const sortAndFilterTodos = (todos, orderBy, orderDirection, filterCompleted) => {
+const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) => {
     if (filterCompleted) {
       todos = todos.filter((todo) => todo.state === "OPEN");
     }
@@ -104,7 +95,7 @@ const sortAndFilterTodos = (todos, orderBy, orderDirection, filterCompleted) => 
         break;
     }
   
-    if (orderDirection === -1) {
+    if (descending) {
       todos.reverse();
     }
   
