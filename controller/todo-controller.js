@@ -3,8 +3,26 @@ import {todoStore} from '../services/todo-store.js'
 export class TodoController {
 
     getTodos = async (req, res) => {
-        // res.json((await todoStore.all() || []))
-        res.render("todo-list", {data: await todoStore.all() || [], dark: false});
+        const todos = await todoStore.all() || [];
+
+        const {
+            orderBy,
+            orderDirection,
+            filterCompleted,
+            darkStyle
+          } = req.userSettings;
+
+        const sortedAndFilteredTodos = sortAndFilterTodos(
+        todos,
+        orderBy,
+        orderDirection,
+        filterCompleted
+        );
+    
+        res.render("todo-list", {
+        data: sortedAndFilteredTodos,
+        dark: darkStyle
+        });
     };
 
     forwardCreate = async (req, res) => {
@@ -63,5 +81,34 @@ export class TodoController {
         res.json(await todoStore.delete(req.params.id)); // TODO should return 402 if not ok
     };
 }
+
+const sortAndFilterTodos = (todos, orderBy, orderDirection, filterCompleted) => {
+    if (filterCompleted) {
+      todos = todos.filter((todo) => todo.state === "OPEN");
+    }
+  
+    switch (orderBy) {
+      case "title":
+        todos.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case "dueDate":
+        todos.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+        break;
+      case "createdDate":
+        todos.sort((a, b) => a.createdDate - b.createdDate);
+        break;
+      case "importance":
+        todos.sort((a, b) => b.importance - a.importance);
+        break;
+      default:
+        break;
+    }
+  
+    if (orderDirection === -1) {
+      todos.reverse();
+    }
+  
+    return todos;
+  };
 
 export const todoController = new TodoController();
