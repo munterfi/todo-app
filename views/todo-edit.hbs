@@ -9,6 +9,12 @@
     <input id='date' name='date' type='date' value="{{data.dueDate}}">
     <label for="description">Description</label>
     <input id='description' name='description' type='text' value="{{data.description}}">
+    <label for="done">Done?</label>
+    {{#if (is_done data.state)}}
+        <input id="state" name="state" type="checkbox" checked>
+    {{else}}
+        <input id="state" name="state" type="checkbox">
+    {{/if}}
     <input type='submit' value='Update' name="updateButton">
     <input type='submit' value='Update & Overview' name="updateAndOverviewButton">
     <input type='submit' value='Overview' name="overviewButton">

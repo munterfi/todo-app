@@ -32,12 +32,13 @@ export class TodoController {
         const importance = Number(req.body.importance);
         const description = req.body.description;
         const title = req.body.title;
+        const state = req.body.state === 'on' ? 'DONE' : 'OPEN';
         let todo = null;
         if (req.body.todoId) {
             // existing entry, update
             const todoId = req.body.todoId;
             const updatedFields = {
-                title, dueDate, importance, description,
+                title, dueDate, importance, description, state
             };
             todo = await todoStore.update(todoId, updatedFields);
         } else {

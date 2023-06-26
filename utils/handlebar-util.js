@@ -11,7 +11,11 @@ export const helpers = {
         const dueDateTime = new Date(dueDate);
         return dueDateTime <= currentDate;
     },
-      
+    
+    'is_done': function(todoState) {
+      return todoState === 'DONE';
+    },
+
     'days_until_due': function(dueDate) {
         const currentDate = new Date();
         const dueDateTime = new Date(dueDate);

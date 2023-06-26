@@ -22,21 +22,17 @@
     {{#each data}}
         <div class="todo-list-item">
             <div class="todo-list-item-state">
-                {{#if_eq this.state "DONE"}}
-                    <input class="todo-list-item-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
-                           checked
-                           disabled>
-                    <label class="todo-list-item-check-label" for="flexCheckCheckedDisabled">
+                {{#if (is_done this.state)}}
+                    <input class="todo-list-item-check-input" type="checkbox" checked disabled>
+                    <label class="todo-list-item-check-label" for="completed">
                         Completed
                     </label>
-                {{/if_eq}}
-                {{#if_eq this.state "OPEN"}}
-                    <input class="todo-list-item-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
-                           disabled>
-                    <label class="todo-list-item-check-label" for="flexCheckCheckedDisabled">
+                {{else}}
+                    <input class="todo-list-item-check-input" type="checkbox" disabled>
+                    <label class="todo-list-item-check-label" for="completed">
                         Open
                     </label>
-                {{/if_eq}}
+                {{/if}}
             </div>
             <div class="todo-list-item-title">{{this.title}}</div>
             {{#if (is_due this.dueDate)}}
