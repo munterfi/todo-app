@@ -6,23 +6,17 @@ export class TodoController {
         const todos = await todoStore.all() || [];
 
         const {
-            orderBy,
-            orderDescending,
-            filterCompleted,
-            darkMode
-          } = req.userSettings;
+            orderBy, orderDescending, filterCompleted, darkMode
+        } = req.userSettings;
 
-        const sortedAndFilteredTodos = sortAndFilterTodos(
-        todos,
-        orderBy,
-        orderDescending,
-        filterCompleted
-        );
-    
+        const sortedAndFilteredTodos = sortAndFilterTodos(todos, orderBy, orderDescending, filterCompleted);
+
         res.render("todo-list", {
-        data: sortedAndFilteredTodos,
-        filterCompleted: filterCompleted,
-        darkMode: darkMode
+            data: sortedAndFilteredTodos,
+            orderBy: orderBy,
+            orderDescending: orderDescending,
+            filterCompleted: filterCompleted,
+            darkMode: darkMode
         });
     };
 
@@ -66,15 +60,15 @@ export class TodoController {
     showTodo = async (req, res) => {
         const todo = await todoStore.get(req.params.id);
         if (!todo) {
-          res.status(404).render("404", {ressourceId: req.params.id, darkMode: req.userSettings.darkMode});
-          return;
+            res.status(404).render("404", {ressourceId: req.params.id, darkMode: req.userSettings.darkMode});
+            return;
         }
         res.render("todo-edit", {data: todo, darkMode: req.userSettings.darkMode});
     };
 
     mapPostToDelete = async (req, res) => {
-      await todoStore.delete(req.params.id)
-      res.redirect("/todos");
+        await todoStore.delete(req.params.id)
+        res.redirect("/todos");
     };
 
     deleteTodo = async (req, res) => {
@@ -86,31 +80,31 @@ const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) => {
     todos = todos.filter((todo) => todo.state !== "DELETED");
 
     if (filterCompleted) {
-      todos = todos.filter((todo) => todo.state === "OPEN");
+        todos = todos.filter((todo) => todo.state === "OPEN");
     }
-  
+
     switch (orderBy) {
-      case "title":
-        todos.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "dueDate":
-        todos.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-        break;
-      case "createdDate":
-        todos.sort((a, b) => a.createdDate - b.createdDate);
-        break;
-      case "importance":
-        todos.sort((a, b) => b.importance - a.importance);
-        break;
-      default:
-        break;
+        case "title":
+            todos.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+        case "dueDate":
+            todos.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+            break;
+        case "createdDate":
+            todos.sort((a, b) => a.createdDate - b.createdDate);
+            break;
+        case "importance":
+            todos.sort((a, b) => b.importance - a.importance);
+            break;
+        default:
+            break;
     }
-  
+
     if (descending) {
-      todos.reverse();
+        todos.reverse();
     }
-  
+
     return todos;
-  };
+};
 
 export const todoController = new TodoController();

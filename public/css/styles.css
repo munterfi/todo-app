@@ -82,8 +82,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  }
-  
+}
+
 .todo-list-item-controls .form-container:not(:last-child) {
     margin-right: 5px; /* Add margin-right to create space between buttons */
 }
