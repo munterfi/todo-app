@@ -1,7 +1,7 @@
 {
-  "name": "demo",
+  "name": "todo-app",
   "version": "1.0.0",
-  "description": "Vorlage",
+  "description": "The Todo App is a simple application for managing and organizing tasks.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,6 +9,10 @@
   },
   "type": "module",
   "author": "mgfeller",
+  "contributors": [
+    "munterfi",
+    "matthiasbilgerig"
+  ],
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
