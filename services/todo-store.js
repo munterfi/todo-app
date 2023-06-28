@@ -7,7 +7,7 @@ export class Todo {
         this.importance = importance;
         this.description = description;
         this.createdDate = new Date();
-        this.state = "OK";
+        this.state = "OPEN";
     }
 }
 
@@ -23,6 +23,11 @@ export class TodoStore {
         return this.db.insert(todo);
     }
 
+    async update(id, updatedFields) {
+        await this.db.update({_id: id}, {$set: updatedFields});
+        return this.get(id);
+    }
+
     async delete(id) {
         await this.db.update({_id: id}, {$set: {"state": "DELETED"}});
         return this.get(id);
@@ -34,8 +39,8 @@ export class TodoStore {
 
     async all() {
         let todos = this.db.find({}).sort({orderDate: -1}).exec();
-        (await todos).push(new Todo("test1", new Date(), 3, "Lorem ipsum"));
-        (await todos).push(new Todo("test2", new Date(), 2, "Lorem ipsum dolor"));
+        // (await todos).push(new Todo("test1", new Date(), 3, "Lorem ipsum"));
+        // (await todos).push(new Todo("test2", new Date(), 2, "Lorem ipsum dolor"));
         return todos;
     }
 }

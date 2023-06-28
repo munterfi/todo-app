@@ -1,6 +1,7 @@
 export class IndexController {
     index(req, res) {
-        res.render("index", {data: "Hello World", dark: true});
+        res.redirect("todos");
+        // res.render("index", {data: "Nothing here", dark: req.userSettings.darkMode});
     };
 }
 
