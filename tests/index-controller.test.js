@@ -16,12 +16,12 @@ dotenv.config({path: `.env-testing`});
 // load app after env
 const app = (await import('../app.js')).app;
 
-describe('GET /', () => {
+describe('INDEX Controller: GET /', () => {
     it('should return index page', async () => {
         const response = await chai.request(app).get('/');
         response.should.have.status(200);
 
         const dom = new jsdom.JSDOM(response.text);
-        expect(dom.window.document.body.innerHTML).contain("Hello World")
+        expect(dom.window.document.body.innerHTML).contain("<h1>Todos</h1>")
     });
 });
