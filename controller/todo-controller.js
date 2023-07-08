@@ -76,7 +76,7 @@ export class TodoController {
     };
 }
 
-const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) => {
+export const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) => {
     todos = todos.filter((todo) => todo.state !== "DELETED");
 
     if (filterCompleted) {
