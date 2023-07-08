@@ -1,9 +1,9 @@
 <h1>Add Todo</h1>
 <form action="/todos" method="post">
     <label for="title">Title</label>
-    <input id='title' name='title' type='text'>
+    <input id='title' name='title' type='text' required="required">
     <label for="importance">Importance</label>
-    <input id='importance' name='importance' type='number'>
+    <input id='importance' name='importance' type='number' min="1" max="5">
     <label for="date">Due date</label>
     <input id='date' name='date' type='date'>
     <label for="description">Description</label>
