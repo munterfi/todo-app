@@ -4,15 +4,25 @@ export const helpers = {
     },
 
     'get_button_label': function (buttonLabel, buttonId, activeId, orderDescending) {
-        if (buttonId === activeId) {
-            return `${buttonLabel} ${orderDescending ? "▲" : "▼"}`;
+        const buttonWasAlreadyActiveBefore = activeId.includes(buttonId);
+        if (buttonWasAlreadyActiveBefore) {
+            return `${buttonLabel} ${orderDescending ? "▼" : "▲"}`;
         } else {
             return `By ${buttonLabel}`;
         }
     },
 
+    'get_button_sortingvalue': function (buttonId, activeId, orderDescending) {
+        const buttonWasAlreadyActiveBefore = activeId.includes(buttonId);
+        if (buttonWasAlreadyActiveBefore) {
+            return `${buttonId}${orderDescending ? "Asc" : "Desc"}`;
+        } else {
+            return `${buttonId}Asc`;
+        }
+    },
+
     'get_importance_label': function (importance) {
-        return "↯".repeat(importance)
+        return "★".repeat(importance)
     },
 
     'is_due': function (dueDate) {
