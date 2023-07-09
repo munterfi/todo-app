@@ -102,7 +102,7 @@ export const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) 
             todos.sort((a, b) => a.createdDate - b.createdDate);
             break;
         case "importance":
-            todos.sort((a, b) => b.importance - a.importance);
+            todos.sort((a, b) => a.importance - b.importance);
             break;
         default:
             break;

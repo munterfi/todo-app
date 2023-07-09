@@ -16,13 +16,13 @@
     </div>
     <div class="todo-list-header-lower-left">
         <form id="todos-sort" action="/todos/" method="get">
-            <button class="custom-button" type="submit" value="title" name="orderBy">
+            <button class="custom-button" type="submit" value={{get_button_sortingvalue "title" orderBy orderDescending}} name="orderBy">
                 {{get_button_label "Name" "title" orderBy orderDescending}}</button>
-            <button class="custom-button" type="submit" value="dueDate" name="orderBy">
+            <button class="custom-button" type="submit" value={{get_button_sortingvalue "dueDate" orderBy orderDescending}} name="orderBy">
                 {{get_button_label "Due Date" "dueDate" orderBy orderDescending}}</button>
-            <button class="custom-button" type="submit" value="createDate" name="orderBy">
+            <button class="custom-button" type="submit" value={{get_button_sortingvalue "createDate" orderBy orderDescending}} name="orderBy">
                 {{get_button_label "Creation Date" "createDate" orderBy orderDescending}}</button>
-            <button class="custom-button" type="submit" value="importance" name="orderBy">
+            <button class="custom-button" type="submit" value={{get_button_sortingvalue "importance" orderBy orderDescending}} name="orderBy">
                 {{get_button_label "Importance" "importance" orderBy orderDescending}}</button>
         </form>
     </div>

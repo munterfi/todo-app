@@ -1,11 +1,11 @@
 export const sessionUserSettings = (req, res, next) => {
     const userSettings = req.session?.userSettings || {
-        orderBy: 'title', orderDescending: false, filterCompleted: false, darkMode: false
+        orderBy: 'titleDesc', orderDescending: true, filterCompleted: false, darkMode: false
     };
     const {orderBy, filterCompleted, darkMode} = req.query;
 
     if (orderBy) {
-        userSettings.orderDescending = userSettings.orderBy === orderBy ? !userSettings.orderDescending : userSettings.orderDescending;
+        userSettings.orderDescending = orderBy.includes("Desc");
         userSettings.orderBy = orderBy;
     }
     if (filterCompleted) {
