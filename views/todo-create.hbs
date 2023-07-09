@@ -3,7 +3,18 @@
     <label for="title">Title</label>
     <input id='title' name='title' type='text' required="required">
     <label for="importance">Importance</label>
-    <input id='importance' name='importance' type='number' min="1" max="5">
+    <div class="importance">
+        <input class="importance" id="importance-5" type="radio" value="5" name="importance"/>
+        <label class="importance" for="importance-5"></label>
+        <input class="importance" id="importance-4" type="radio" value="4" name="importance"/>
+        <label class="importance" for="importance-4"></label>
+        <input class="importance" id="importance-3" type="radio" value="3" name="importance"/>
+        <label class="importance" for="importance-3"></label>
+        <input class="importance" id="importance-2" type="radio" value="2" name="importance"/>
+        <label class="importance" for="importance-2"></label>
+        <input class="importance" id="importance-1" type="radio" value="1" name="importance" checked/>
+        <label class="importance" for="importance-1"></label>
+    </div>
     <label for="date">Due date</label>
     <input id='date' name='date' type='date'>
     <label for="description">Description</label>

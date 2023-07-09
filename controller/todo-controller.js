@@ -63,7 +63,15 @@ export class TodoController {
             res.status(404).render("404", {ressourceId: req.params.id, darkMode: req.userSettings.darkMode});
             return;
         }
-        res.render("todo-edit", {data: todo, darkMode: req.userSettings.darkMode});
+
+        res.render("todo-edit", {
+            data: todo,
+            importanceIsSet5: Boolean(todo.importance === 5),
+            importanceIsSet4: Boolean(todo.importance === 4),
+            importanceIsSet3: Boolean(todo.importance === 3),
+            importanceIsSet2: Boolean(todo.importance === 2),
+            importanceIsSet1: Boolean(todo.importance === 1),
+            darkMode: req.userSettings.darkMode});
     };
 
     mapPostToDelete = async (req, res) => {

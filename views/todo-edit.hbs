@@ -4,7 +4,18 @@
     <input type="hidden" id="todoId" name="todoId" value={{data._id}} />
     <input id='title' name='title' type='text' required="required" value="{{data.title}}">
     <label for="importance">Importance</label>
-    <input id='importance' name='importance' type='number' min="1" max="5" value="{{data.importance}}">
+    <div class="importance">
+        <input class="importance" id="importance-5" type="radio" value="5" name="importance" {{#if importanceIsSet5}} checked {{/if}}/>
+        <label class="importance" for="importance-5"></label>
+        <input class="importance" id="importance-4" type="radio" value="4" name="importance" {{#if importanceIsSet4}} checked {{/if}}/>
+        <label class="importance" for="importance-4"></label>
+        <input class="importance" id="importance-3" type="radio" value="3" name="importance" {{#if importanceIsSet3}} checked {{/if}}/>
+        <label class="importance" for="importance-3"></label>
+        <input class="importance" id="importance-2" type="radio" value="2" name="importance" {{#if importanceIsSet2}} checked {{/if}}/>
+        <label class="importance" for="importance-2"></label>
+        <input class="importance" id="importance-1" type="radio" value="1" name="importance" {{#if importanceIsSet1}} checked {{/if}}/>
+        <label class="importance" for="importance-1"></label>
+    </div>
     <label for="date">Due date</label>
     <input id='date' name='date' type='date' value="{{data.dueDate}}">
     <label for="description">Description</label>

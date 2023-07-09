@@ -109,3 +109,28 @@ body {
 .custom-button:hover {
     background-color: #0056b3; /* Optional: Change the background color on hover */
 }
+
+input.importance {
+    display: none;
+}
+
+label.importance {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.importance:checked ~ label.importance:before {
+    color: #ffea00;
+    transition: all .25s;
+}
+
+label.importance:hover {
+    transform: rotate(-30deg) scale(1.2);
+}
+
+label.importance:before {
+    content: "★";
+}
