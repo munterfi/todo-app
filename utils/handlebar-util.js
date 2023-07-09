@@ -12,7 +12,7 @@ export const helpers = {
     },
 
     'get_importance_label': function (importance) {
-        return "↯".repeat(importance)
+        return "★".repeat(importance)
     },
 
     'is_due': function (dueDate) {
