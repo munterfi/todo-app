@@ -5,36 +5,84 @@ body {
 
 .todo-list-header {
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
     gap: 10px; /* Adjust the value to set the desired space between rows */
 }
 
-.todo-list-header-upper-left {
+.todo-list-header-create {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
     outline: 2px solid red;
 }
 
-.todo-list-header-upper-right {
-    grid-column: 2 / span 1;
+.todo-list-header-dark-mode {
+    grid-column: 3 / span 1;
     grid-row: 1 / span 1;
     justify-self: end; /* Align content to the right side */
     outline: 2px solid violet;
 }
 
-.todo-list-header-lower-left {
-    grid-column: 1 / span 1;
+.todo-list-header-sort {
+    grid-column: 1 / span 3;
     grid-row: 2 / span 1;
     outline: 2px solid orange;
 }
 
-.todo-list-header-lower-right {
+.todo-list-header-sort-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.todo-list-header-filter {
     grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
+    grid-row: 1 / span 1;
     justify-self: end; /* Align content to the right side */
     outline: 2px solid yellow;
 }
+
+@media screen and (min-width: 880px) {
+    .todo-list-header {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px; /* Adjust the value to set the desired space between rows */
+    }
+
+    .todo-list-header-create {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        outline: 2px solid red;
+    }
+
+    .todo-list-header-dark-mode {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        justify-self: end; /* Align content to the right side */
+        outline: 2px solid violet;
+    }
+
+    .todo-list-header-sort {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        outline: 2px solid orange;
+    }
+
+    .todo-list-header-filter {
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+        justify-self: end; /* Align content to the right side */
+        outline: 2px solid yellow;
+    }
+
+    .todo-list-header-sort-flex{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
 
 .todo-list {
     display: flex;
@@ -102,8 +150,14 @@ body {
     color: white; /* Optional: Set the text color of the button */
     border: none; /* Optional: Remove the button border */
     padding: 5px 10px; /* Optional: Add padding to the button */
+    margin: 3px;
     cursor: pointer; /* Optional: Add a cursor pointer on hover */
-    border-radius: 5px
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.custom-button-delete{
+    background-color: red; /* Optional: Add a background color to the button */
 }
 
 .custom-button:hover {
