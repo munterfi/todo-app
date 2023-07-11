@@ -3,6 +3,13 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+@media screen and (min-width: 880px) {
+    body {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 .todo-list-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -13,20 +20,17 @@ body {
 .todo-list-header-create {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    outline: 2px solid red;
 }
 
 .todo-list-header-dark-mode {
     grid-column: 3 / span 1;
     grid-row: 1 / span 1;
     justify-self: end; /* Align content to the right side */
-    outline: 2px solid violet;
 }
 
 .todo-list-header-sort {
     grid-column: 1 / span 3;
     grid-row: 2 / span 1;
-    outline: 2px solid orange;
 }
 
 .todo-list-header-sort-flex{
@@ -39,7 +43,6 @@ body {
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
     justify-self: end; /* Align content to the right side */
-    outline: 2px solid yellow;
 }
 
 @media screen and (min-width: 880px) {
@@ -53,27 +56,23 @@ body {
     .todo-list-header-create {
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
-        outline: 2px solid red;
     }
 
     .todo-list-header-dark-mode {
         grid-column: 2 / span 1;
         grid-row: 1 / span 1;
         justify-self: end; /* Align content to the right side */
-        outline: 2px solid violet;
     }
 
     .todo-list-header-sort {
         grid-column: 1 / span 1;
         grid-row: 2 / span 1;
-        outline: 2px solid orange;
     }
 
     .todo-list-header-filter {
         grid-column: 2 / span 1;
         grid-row: 2 / span 1;
         justify-self: end; /* Align content to the right side */
-        outline: 2px solid yellow;
     }
 
     .todo-list-header-sort-flex{
@@ -145,6 +144,56 @@ body {
     margin-right: 5px; /* Add margin-right to create space between buttons */
 }
 
+.todo-detail-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-detail-input{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-detail-controls{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.text-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.todo-detail-input>label{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+.text-input.description{
+    height: 100px;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 5px #0066cc;
+}
+
+@media screen and (min-width: 880px) {
+    .todo-detail-controls{
+        flex-direction: row;
+    }
+}
+
+textarea{
+    resize: none;
+}
+
 .custom-button {
     background-color: #007bff; /* Optional: Add a background color to the button */
     color: white; /* Optional: Set the text color of the button */
@@ -164,14 +213,18 @@ body {
     background-color: #0056b3; /* Optional: Change the background color on hover */
 }
 
+
+
 input.importance {
     display: none;
 }
 
 label.importance {
     float: right;
-    padding: 10px;
-    font-size: 36px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    font-size: 24px;
     color: #444;
     transition: all .2s;
 }

@@ -64,8 +64,10 @@ export class TodoController {
             return;
         }
 
+        const date = new Date().tois
         res.render("todo-edit", {
             data: todo,
+            date: todo.dueDate.toISOString().split("T")[0],
             importanceIsSet5: Boolean(todo.importance === 5),
             importanceIsSet4: Boolean(todo.importance === 4),
             importanceIsSet3: Boolean(todo.importance === 3),
