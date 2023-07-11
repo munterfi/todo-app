@@ -21,7 +21,7 @@ export class TodoController {
     };
 
     forwardToCreateTodo = async (req, res) => {
-        res.render("todo-create", {darkMode: req.userSettings.darkMode});
+        res.render("todo-create", {today: new Date().toISOString().split("T")[0], darkMode: req.userSettings.darkMode});
     };
 
     createOrUpdateTodo = async (req, res) => {
@@ -64,8 +64,10 @@ export class TodoController {
             return;
         }
 
+        const date = new Date().tois
         res.render("todo-edit", {
             data: todo,
+            date: todo.dueDate.toISOString().split("T")[0],
             importanceIsSet5: Boolean(todo.importance === 5),
             importanceIsSet4: Boolean(todo.importance === 4),
             importanceIsSet3: Boolean(todo.importance === 3),

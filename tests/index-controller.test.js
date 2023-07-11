@@ -17,11 +17,21 @@ dotenv.config({path: `.env-testing`});
 const app = (await import('../app.js')).app;
 
 describe('INDEX Controller: GET /', () => {
-    it('should return index page', async () => {
+    it('should redirect to index page and return OK 200', async () => {
         const response = await chai.request(app).get('/');
+
         response.should.have.status(200);
+
+        response.redirects.length.should.be.greaterThanOrEqual(1);
 
         const dom = new jsdom.JSDOM(response.text);
         expect(dom.window.document.body.innerHTML).contain("<h1>Todos</h1>")
+    });
+});
+
+describe('TODO Controller: GET /id', () => {
+    it('should return not found 404 page', async () => {
+        const response = await chai.request(app).get('/todos/AnIdWhichDoesNotExist');
+        response.should.have.status(404);
     });
 });

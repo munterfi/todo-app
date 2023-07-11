@@ -3,37 +3,83 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+@media screen and (min-width: 480px) {
+    body {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 .todo-list-header {
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
     gap: 10px; /* Adjust the value to set the desired space between rows */
 }
 
-.todo-list-header-upper-left {
+.todo-list-header-create {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    outline: 2px solid red;
 }
 
-.todo-list-header-upper-right {
-    grid-column: 2 / span 1;
+.todo-list-header-dark-mode {
+    grid-column: 3 / span 1;
     grid-row: 1 / span 1;
     justify-self: end; /* Align content to the right side */
-    outline: 2px solid violet;
 }
 
-.todo-list-header-lower-left {
-    grid-column: 1 / span 1;
+.todo-list-header-sort {
+    grid-column: 1 / span 3;
     grid-row: 2 / span 1;
-    outline: 2px solid orange;
 }
 
-.todo-list-header-lower-right {
+.todo-list-header-sort-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.todo-list-header-filter {
     grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
-    justify-self: end; /* Align content to the right side */
-    outline: 2px solid yellow;
+    grid-row: 1 / span 1;
+    justify-self: center; /* Align content to the right side */
+}
+
+@media screen and (min-width: 480px) {
+
+    .todo-list-header {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px; /* Adjust the value to set the desired space between rows */
+    }
+
+    .todo-list-header-create {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .todo-list-header-dark-mode {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        justify-self: end; /* Align content to the right side */
+    }
+
+    .todo-list-header-sort {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .todo-list-header-filter {
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+        justify-self: end; /* Align content to the right side */
+    }
+
+    .todo-list-header-sort-flex{
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .todo-list {
@@ -47,26 +93,50 @@ body {
 
 .todo-list-item {
     display: grid;
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas:
-        "area-due-date area-title       area-importance area-edit-button"
-        "area-state    area-description area-importance area-edit-button";
+        "area-due-date area-title       area-importance"
+        "area-state    area-description area-importance"
+        "area-edit-button area-edit-button area-edit-button";
     grid-row-gap: 7px;
     background-color: #ffffff; /* Optional: Add background color to visually separate the todo items */
     padding: 10px; /* Optional: Add padding to the todo items */
+    overflow: hidden;
+}
+
+@media screen and (min-width: 480px) {
+    .todo-list-item {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        grid-template-areas:
+        "area-due-date area-title       area-importance area-edit-button"
+        "area-state    area-description area-importance area-edit-button";
+        grid-row-gap: 7px;
+        background-color: #ffffff; /* Optional: Add background color to visually separate the todo items */
+        padding: 10px; /* Optional: Add padding to the todo items */
+        overflow: hidden;
+    }
 }
 
 .todo-list-item-state {
     grid-area: area-state;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .todo-list-item-title {
     grid-area: area-title;
+    font-weight: bold;
 }
 
 .todo-list-item-due-date {
     grid-area: area-due-date;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .todo-list-item-due-date-over {
@@ -84,6 +154,9 @@ body {
 
 .todo-list-item-description {
     grid-area: area-description;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .todo-list-item-controls {
@@ -93,8 +166,73 @@ body {
     align-items: center;
 }
 
+.todo-list-item-controls>form{
+    display: flex;
+    flex: 1;
+
+}
+
+@media screen and (min-width: 480px) {
+    .todo-list-item-controls {
+        grid-area: area-edit-button;
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: 10px;
+    }
+}
+
 .todo-list-item-controls .form-container:not(:last-child) {
     margin-right: 5px; /* Add margin-right to create space between buttons */
+}
+
+.todo-detail-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-detail-input{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-detail-controls{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.text-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.todo-detail-input>label{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+.text-input.description{
+    height: 100px;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 5px #0066cc;
+}
+
+@media screen and (min-width: 480px) {
+    .todo-detail-controls{
+        flex-direction: row;
+    }
+}
+
+textarea{
+    resize: none;
 }
 
 .custom-button {
@@ -102,8 +240,20 @@ body {
     color: white; /* Optional: Set the text color of the button */
     border: none; /* Optional: Remove the button border */
     padding: 5px 10px; /* Optional: Add padding to the button */
+    margin: 3px;
     cursor: pointer; /* Optional: Add a cursor pointer on hover */
-    border-radius: 5px
+    border-radius: 5px;
+    white-space: nowrap;
+    flex: 1;
+}
+
+@media screen and (min-width: 480px) {
+    .custom-button {
+        flex: none;
+    }
+}
+.custom-button-delete{
+    background-color: #B30000; /* Optional: Add a background color to the button */
 }
 
 .custom-button:hover {
@@ -116,8 +266,10 @@ input.importance {
 
 label.importance {
     float: right;
-    padding: 10px;
-    font-size: 36px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    font-size: 24px;
     color: #444;
     transition: all .2s;
 }

@@ -52,5 +52,9 @@ export const helpers = {
         } else {
             return 'Due today';
         }
+    },
+
+    'data_is_not_empty': function (data) {
+        return data.length != 0;
     }
 }
