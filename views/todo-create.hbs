@@ -1,25 +1,29 @@
 <h1>Add Todo</h1>
-<form action="/todos" method="post">
-    <label for="title">Title</label>
-    <input id='title' name='title' type='text' required="required">
-    <label for="importance">Importance</label>
-    <div class="importance">
-        <input class="importance" id="importance-5" type="radio" value="5" name="importance"/>
-        <label class="importance" for="importance-5"></label>
-        <input class="importance" id="importance-4" type="radio" value="4" name="importance"/>
-        <label class="importance" for="importance-4"></label>
-        <input class="importance" id="importance-3" type="radio" value="3" name="importance"/>
-        <label class="importance" for="importance-3"></label>
-        <input class="importance" id="importance-2" type="radio" value="2" name="importance"/>
-        <label class="importance" for="importance-2"></label>
-        <input class="importance" id="importance-1" type="radio" value="1" name="importance" checked/>
-        <label class="importance" for="importance-1"></label>
+<form class="todo-detail-form" action="/todos" method="post">
+    <div class="todo-detail-input">
+        <label for="title">Title</label>
+        <input class="text-input" id='title' name='title' type='text' required="required">
+        <label for="importance">Importance</label>
+        <div class="importance">
+            <input class="importance" id="importance-5" type="radio" value="5" name="importance"/>
+            <label class="importance" for="importance-5"></label>
+            <input class="importance" id="importance-4" type="radio" value="4" name="importance"/>
+            <label class="importance" for="importance-4"></label>
+            <input class="importance" id="importance-3" type="radio" value="3" name="importance"/>
+            <label class="importance" for="importance-3"></label>
+            <input class="importance" id="importance-2" type="radio" value="2" name="importance"/>
+            <label class="importance" for="importance-2"></label>
+            <input class="importance" id="importance-1" type="radio" value="1" name="importance" checked/>
+            <label class="importance" for="importance-1"></label>
+        </div>
+        <label for="date">Due date</label>
+        <input class="text-input" id='date' name='date' type='date' value="{{today}}">
+        <label for="description">Description</label>
+        <textarea class="text-input" id='description' rows="5" maxlength="1000" name='description'></textarea>
     </div>
-    <label for="date">Due date</label>
-    <input id='date' name='date' type='date'>
-    <label for="description">Description</label>
-    <input id='description' name='description' type='text'>
-    <input type='submit' value='Create' name="createButton">
-    <input type='submit' value='Create & Overview' name="createAndOverviewButton">
-    <input type='submit' value='Overview' name="overviewButton">
+    <div class="todo-detail-controls">
+        <input class="custom-button" type='submit' value='Create' name="createButton">
+        <input class="custom-button" type='submit' value='Create & Overview' name="createAndOverviewButton">
+        <input class="custom-button" type='submit' value='Overview' name="overviewButton">
+    </div>
 </form>

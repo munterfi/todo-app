@@ -46,43 +46,43 @@
     </div>
 </div>
 <div class="todo-list">
-    {{#each data}}
-        <div class="todo-list-item">
-            <div class="todo-list-item-state">
-                {{#if (is_done this.state)}}
-                    <input class="todo-list-item-check-input" type="checkbox" id="completed" checked disabled>
-                    <label class="todo-list-item-check-label" for="completed">
-                        Completed
-                    </label>
+    {{#if (data_is_not_empty data)}}
+        {{#each data}}
+            <div class="todo-list-item">
+                <div class="todo-list-item-state">
+                    {{#if (is_done this.state)}}
+                        <input class="todo-list-item-check-input" type="checkbox" id="completed" checked disabled>
+                        <label class="todo-list-item-check-label" for="completed">
+                            Completed
+                        </label>
+                    {{else}}
+                        <input class="todo-list-item-check-input" type="checkbox" id="open" disabled>
+                        <label class="todo-list-item-check-label" for="open">
+                            Open
+                        </label>
+                    {{/if}}
+                </div>
+                <div class="todo-list-item-title">{{this.title}}</div>
+                {{#if (is_due this.dueDate)}}
+                    <div class="todo-list-item-due-date-over">{{days_until_due this.dueDate}}</div>
                 {{else}}
-                    <input class="todo-list-item-check-input" type="checkbox" id="open" disabled>
-                    <label class="todo-list-item-check-label" for="open">
-                        Open
-                    </label>
+                    <div class="todo-list-item-due-date">{{days_until_due this.dueDate}}</div>
                 {{/if}}
-            </div>
-            <div class="todo-list-item-title">{{this.title}}</div>
-            {{#if (is_due this.dueDate)}}
-                <div class="todo-list-item-due-date-over">{{days_until_due this.dueDate}}</div>
-            {{else}}
-                <div class="todo-list-item-due-date">{{days_until_due this.dueDate}}</div>
-            {{/if}}
-            <div class="todo-list-item-importance">{{get_importance_label this.importance}}</div>
-            <div class="todo-list-item-description">{{this.description}}</div>
-            <div class="todo-list-item-controls">
-                <div class="form-container">
+                <div class="todo-list-item-importance">{{get_importance_label this.importance}}</div>
+                <div class="todo-list-item-description">{{this.description}}</div>
+                <div class="todo-list-item-controls">
                     <form action='/todos/{{this._id}}' method='get'>
                         <button class="custom-button" data-todo-id="{{this._id}}">Edit</button>
                     </form>
-                </div>
-                <div class="form-container">
                     <form action='/todos/{{this._id}}' method='post'>
                         <button class="custom-button custom-button-delete" data-todo-id="{{this._id}}">Delete</button>
                     </form>
                 </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
+    {{else}}
+        <div class="todo-list-item">Sun, Fun, and Nothing TODO!</div>
+    {{/if}}
 </div>
 
 

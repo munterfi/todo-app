@@ -21,7 +21,7 @@ export class TodoController {
     };
 
     forwardToCreateTodo = async (req, res) => {
-        res.render("todo-create", {darkMode: req.userSettings.darkMode});
+        res.render("todo-create", {today: new Date().toISOString().split("T")[0], darkMode: req.userSettings.darkMode});
     };
 
     createOrUpdateTodo = async (req, res) => {
