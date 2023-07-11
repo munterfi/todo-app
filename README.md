@@ -5,15 +5,11 @@ tasks, as well as sort and filter them based on different criteria.
 
 ## Open tasks
 
-- Write documentation into this README: Short summary of the app, how to, development and testing.
-- Change and limit importance input to the range of 1 to 5. Also display it as clickable symbols (↯) in the edit and
-  create view.
 - Make design responsive, choose mobile first approach, set default design to vertical.
 - Add overall base layout with header (app title and date), content and footer (copyright note and
   version) for a vertical mobile design.
 - Add content layout for create and update site.
 - Apply uniform CSS styling for all sites.
-- Add two tests: Unit test and integration test.
 - *Optional, if time*:
     - Refactor JS code, extract some functions to make program flow more clear.
     - Style 404 page.
