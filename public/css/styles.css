@@ -377,4 +377,9 @@ label.importance:before {
     .custom-button {
         flex: none;
     }
+
+    .todo-list-item-controls>form>.custom-button{
+        margin: 5px;
+        flex: max-content;
+    }
 }
