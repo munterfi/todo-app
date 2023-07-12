@@ -87,7 +87,6 @@ export class TodoController {
             });
             return;
         }
-        const date = new Date().tois
         res.render("todo-edit", {
             data: todo,
             date: todo.dueDate.toISOString().split("T")[0],
