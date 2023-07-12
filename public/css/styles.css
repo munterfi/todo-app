@@ -55,6 +55,22 @@ body {
     left: 0;
     width: 100%;
 }
+.page-not-found{
+    display: flex;
+    flex-direction: column;
+}
+.page-not-found-text{
+    padding: 10px;
+}
+.page-not-found-meme{
+    display: flex;
+}
+.page-not-found-meme img {
+    padding: 20px;
+    max-width: 400px;
+    max-height: 50%;
+    overflow: hidden;
+}
 
 /* todo list styles */
 
