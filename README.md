@@ -5,7 +5,7 @@ tasks, as well as sort and filter them based on different criteria.
 
 ## Open tasks
 
-- CSS details (Edit, Delete in List at non mobile view => Fuck Flex).
+- CSS details (Edit).
 - Style 404 page.
 - Finally, make repository public and submit assignment.
 

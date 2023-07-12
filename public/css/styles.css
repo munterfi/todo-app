@@ -13,6 +13,7 @@ body {
     align-items: center;
     height: 50px;
     margin-bottom: 10px;
+    border-bottom: 1px solid black;
 }
 
 .content-header-logo {
@@ -54,6 +55,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
+    border-top: 1px solid black;
 }
 .page-not-found{
     display: flex;
@@ -115,14 +117,14 @@ body {
     margin-top: 20px; /* Add a margin on top of the container */
     gap: 10px; /* Adjust the value to set the desired space between todo items */
     grid-row-gap: 1px;
-    background-color: #000000;
+    background-color: black;
 }
 
 .todo-list-empty {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 /* todo list item styles */
@@ -136,7 +138,7 @@ body {
     "area-state    area-description area-importance"
     "area-edit-button area-edit-button area-edit-button";
     grid-row-gap: 7px;
-    background-color: #ffffff;
+    background-color: white;
     padding: 10px;
     overflow: hidden;
 }
@@ -169,7 +171,7 @@ body {
 
 .todo-list-item-due-date-tooltip {
     visibility: hidden;
-    background-color: #ffea00;
+    background-color: #fae6a9;
     color: #1f1e1e;
     font-size: small;
     text-align: center;
