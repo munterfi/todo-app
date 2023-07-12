@@ -25,7 +25,7 @@ describe('INDEX Controller: GET /', () => {
         response.redirects.length.should.be.greaterThanOrEqual(1);
 
         const dom = new jsdom.JSDOM(response.text);
-        expect(dom.window.document.body.innerHTML).contain("<h1>Todos</h1>")
+        expect(dom.window.document.body.innerHTML).contain("<div class=\"todo-list-header\">")
     });
 });
 

@@ -5,7 +5,6 @@ tasks, as well as sort and filter them based on different criteria.
 
 ## Open tasks
 
-- Fix failing tests: `npm run test` should work.
 - CSS details (Edit, Delete in List at non mobile view => Fuck Flex).
 - Style 404 page.
 - Finally, make repository public and submit assignment.
