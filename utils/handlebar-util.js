@@ -8,7 +8,7 @@ export const helpers = {
         if (buttonWasAlreadyActiveBefore) {
             return `${buttonLabel} ${orderDescending ? "▼" : "▲"}`;
         } else {
-            return `By ${buttonLabel}`;
+            return `${buttonLabel}`;
         }
     },
 
