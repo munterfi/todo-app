@@ -1,5 +1,5 @@
 import {todoStore} from '../services/todo-store.js'
-import {sortAndFilterTodos, getProgressAndState} from '../utils/todo-list-helpers.js'
+import {getProgressAndState, sortAndFilterTodos} from '../utils/todo-list-helpers.js'
 
 export class TodoController {
 
@@ -9,7 +9,7 @@ export class TodoController {
             orderBy, orderDescending, filterCompleted, darkMode
         } = req.userSettings;
         const sortedAndFilteredTodos = sortAndFilterTodos(todos, orderBy, orderDescending, filterCompleted);
-        const { progress, state } = getProgressAndState(todos);
+        const {progress, state} = getProgressAndState(todos);
         res.render("todo-list", {
             data: sortedAndFilteredTodos,
             orderBy: orderBy,
@@ -26,7 +26,7 @@ export class TodoController {
 
     forwardToCreateTodo = async (req, res) => {
         const todos = await todoStore.all() || [];
-        const { progress, state } = getProgressAndState(todos);
+        const {progress, state} = getProgressAndState(todos);
         res.render("todo-create", {
             today: new Date().toISOString().split("T")[0],
             darkMode: req.userSettings.darkMode,
@@ -73,7 +73,7 @@ export class TodoController {
 
     showTodo = async (req, res) => {
         const todos = await todoStore.all() || [];
-        const { progress, state } = getProgressAndState(todos);
+        const {progress, state} = getProgressAndState(todos);
         const todo = await todoStore.get(req.params.id);
         if (!todo) {
             res.status(404).render("404", {

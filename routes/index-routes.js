@@ -1,7 +1,7 @@
 import express from 'express';
+import {indexController} from '../controller/index-controller.js';
 
 const router = express.Router();
-import {indexController} from '../controller/index-controller.js';
 
 router.get("/", indexController.index.bind(indexController));
 
