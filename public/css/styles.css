@@ -147,6 +147,30 @@ body {
 .todo-list-item-due-date-over {
     grid-area: area-due-date;
     color: red;
+    position: relative;
+    display: inline-block;
+}
+
+.todo-list-item-due-date-tooltip {
+    visibility: hidden;
+    background-color: #ffea00;
+    color: #1f1e1e;
+    font-size: small;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.todo-list-item-due-date:hover .todo-list-item-due-date-tooltip {
+    visibility: visible;
+    width: 170px;
+}
+
+.todo-list-item-due-date-over:hover .todo-list-item-due-date-tooltip {
+    visibility: visible;
+    width: 200px;
 }
 
 .todo-list-item-importance {

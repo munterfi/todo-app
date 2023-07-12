@@ -31,6 +31,10 @@ export const helpers = {
         return dueDateTime <= currentDate;
     },
 
+    'get_date_only': function (dueDate) {
+        return dueDate.toISOString().split('T')[0];
+    },
+
     'is_done': function (todoState) {
         return todoState === 'DONE';
     },
