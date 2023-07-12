@@ -5,18 +5,11 @@ tasks, as well as sort and filter them based on different criteria.
 
 ## Open tasks
 
-- Add overall base layout with header (app title and date), content and footer (copyright note and
-  version) for a vertical mobile design.
-- CSS details (Edit,Delete in List at non mobile view => Fuck Flex)
-- CSS cleanup, duplicates
+- CSS details (Edit, Delete in List at non mobile view => Fuck Flex)
 - Font sizes
-- 
 - *Optional, if time*:
     - Refactor JS code, extract some functions to make program flow more clear.
     - Style 404 page.
-    - Add some statistics to the app header: Total open todos vs. total completed. Could also be a chart (bar, pie or
-      color the header like a loading bar, or very fancy: Add a timeline plot with all upcoming todos on the x-axis and
-      the priority on the y-axis with the current date as vertical line.)
 - Finally, make repository public and submit assignment.
 
 ## Features

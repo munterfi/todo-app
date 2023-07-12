@@ -6,6 +6,56 @@ body {
   font-family: Verdana, sans-serif;
 }
 
+.content-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.content-header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-emoji {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.content-header-title {
+  font-weight: bold;
+  text-align: left;
+}
+
+.content-header-progress {
+  display: flex;
+  align-items: center;
+}
+
+.progress-emoji {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.progress-value {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.content-footer {  
+  color: #8f8f8f;
+  padding: 5px;
+  font-size: 8px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* todo list styles */
 
 .todo-list-header {

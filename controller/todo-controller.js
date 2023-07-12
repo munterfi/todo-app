@@ -4,24 +4,37 @@ export class TodoController {
 
     showTodoList = async (req, res) => {
         const todos = await todoStore.all() || [];
-
         const {
             orderBy, orderDescending, filterCompleted, darkMode
         } = req.userSettings;
-
         const sortedAndFilteredTodos = sortAndFilterTodos(todos, orderBy, orderDescending, filterCompleted);
-
+        const { progress, state } = getProgressAndState(todos);
         res.render("todo-list", {
             data: sortedAndFilteredTodos,
             orderBy: orderBy,
             orderDescending: orderDescending,
             filterCompleted: filterCompleted,
-            darkMode: darkMode
+            darkMode: darkMode,
+            logo: "📝",
+            title: "Todos",
+            state: state,
+            progress: progress,
+            version: process.env.npm_package_version
         });
     };
 
     forwardToCreateTodo = async (req, res) => {
-        res.render("todo-create", {today: new Date().toISOString().split("T")[0], darkMode: req.userSettings.darkMode});
+        const todos = await todoStore.all() || [];
+        const { progress, state } = getProgressAndState(todos);
+        res.render("todo-create", {
+            today: new Date().toISOString().split("T")[0],
+            darkMode: req.userSettings.darkMode,
+            logo: "➕",
+            title: "Add Todo",
+            state: state,
+            progress: progress,
+            version: process.env.npm_package_version
+        });
     };
 
     createOrUpdateTodo = async (req, res) => {
@@ -58,12 +71,21 @@ export class TodoController {
     }
 
     showTodo = async (req, res) => {
+        const todos = await todoStore.all() || [];
+        const { progress, state } = getProgressAndState(todos);
         const todo = await todoStore.get(req.params.id);
         if (!todo) {
-            res.status(404).render("404", {ressourceId: req.params.id, darkMode: req.userSettings.darkMode});
+            res.status(404).render("404", {
+                ressourceId: req.params.id,
+                darkMode: req.userSettings.darkMode,
+                logo: "❌",
+                title: "404 Not Found",
+                state: state,
+                progress: progress,
+                version: process.env.npm_package_version
+            });
             return;
         }
-
         const date = new Date().tois
         res.render("todo-edit", {
             data: todo,
@@ -73,7 +95,13 @@ export class TodoController {
             importanceIsSet3: Boolean(todo.importance === 3),
             importanceIsSet2: Boolean(todo.importance === 2),
             importanceIsSet1: Boolean(todo.importance === 1),
-            darkMode: req.userSettings.darkMode});
+            darkMode: req.userSettings.darkMode,
+            logo: "✏️",
+            title: "Edit Todo",
+            state: state,
+            progress: progress,
+            version: process.env.npm_package_version
+        });
     };
 
     mapPostToDelete = async (req, res) => {
@@ -117,4 +145,30 @@ export const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) 
     return todos;
 };
 
+const getProgressAndState = (todos) => {
+    let progress = 100;
+  
+    if (todos.length > 0) {
+      const doneTodos = todos.filter((todo) => todo.state === "DONE");
+      const totalTodos = todos.filter((todo) => todo.state !== "DELETED");
+  
+      if (totalTodos.length > 0) {
+        progress = (doneTodos.length / totalTodos.length) * 100;
+      }
+    }
+  
+    let state = "";
+    if (progress === 100) {
+      state = "🎉";
+    } else if (progress >= 80) {
+      state = "👍";
+    } else if (progress >= 50) {
+      state = "⚡️";
+    } else {
+      state = "🔥";
+    }
+  
+    return { progress: Math.round(progress), state };
+  };
+  
 export const todoController = new TodoController();

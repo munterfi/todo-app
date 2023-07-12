@@ -26,6 +26,19 @@
     {{/if}}
 </head>
 <body>
+<div class="content-header">
+  <div class="content-header-logo">
+    <span class="logo-emoji">{{logo}}</span>
+    <h1 class="content-header-title">{{title}}</h1>
+  </div>
+  <div class="content-header-progress">
+    <span class="progress-emoji">{{state}}</span>
+    <span class="progress-value">{{progress}}%</span>
+  </div>
+</div>
 {{{body}}}
+<div class="content-footer">
+    todo-app {{version}} by @munterfi, @matthiasbilgerig
+</div>
 </body>
 </html>
