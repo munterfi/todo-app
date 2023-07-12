@@ -4,9 +4,6 @@ The Todo App is a simple application for managing and organizing tasks. It allow
 tasks, as well as sort and filter them based on different criteria.
 
 ## Open tasks
-
-- CSS details (Edit).
-- Style 404 page.
 - Finally, make repository public and submit assignment.
 
 ## Features

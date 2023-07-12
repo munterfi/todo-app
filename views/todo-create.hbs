@@ -1,7 +1,7 @@
 <form class="todo-detail-form" action="/todos" method="post">
     <div class="todo-detail-input">
         <label for="title">Title</label>
-        <input class="text-input" id='title' name='title' type='text' required="required">
+        <input class="text-input" id='title' name='title' type='text' placeholder="Enter Title" required>
         <label for="importance">Importance</label>
         <div class="importance">
             <input class="importance" id="importance-5" type="radio" value="5" name="importance"/>
@@ -18,7 +18,7 @@
         <label for="date">Due date</label>
         <input class="text-input" id='date' name='date' type='date' value="{{today}}">
         <label for="description">Description</label>
-        <textarea class="text-input" id='description' rows="5" maxlength="1000" name='description'></textarea>
+        <textarea class="text-input" id='description' rows="5" maxlength="1000" placeholder="Enter Description" name='description'></textarea>
     </div>
     <div class="todo-detail-controls">
         <input class="custom-button" type='submit' value='Create' name="createButton">
