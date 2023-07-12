@@ -5,7 +5,7 @@ export const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) 
         todos = todos.filter((todo) => todo.state === "OPEN");
     }
 
-    switch (orderBy) {
+    switch (getSortingCriteriaWithoutOrder(orderBy)) {
         case "title":
             todos.sort((a, b) => a.title.localeCompare(b.title));
             break;
@@ -28,6 +28,10 @@ export const sortAndFilterTodos = (todos, orderBy, descending, filterCompleted) 
 
     return todos;
 };
+
+const getSortingCriteriaWithoutOrder = (orderByCriteriaWithOrder) => {
+    return orderByCriteriaWithOrder.replace('Asc','').replace('Desc','');
+}
 
 export const getProgressAndState = (todos) => {
     let progress = 100;
