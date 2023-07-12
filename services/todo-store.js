@@ -39,8 +39,6 @@ export class TodoStore {
 
     async all() {
         let todos = this.db.find({}).sort({orderDate: -1}).exec();
-        // (await todos).push(new Todo("test1", new Date(), 3, "Lorem ipsum"));
-        // (await todos).push(new Todo("test2", new Date(), 2, "Lorem ipsum dolor"));
         return todos;
     }
 }

@@ -1,6 +1,6 @@
 import chai from 'chai';
 import {Todo} from "../services/todo-store.js";
-import {sortAndFilterTodos} from "../controller/todo-controller.js";
+import {sortAndFilterTodos} from "../utils/todo-list-helpers.js";
 
 //Setup
 const todo1 = new Todo("AAAA", new Date("2000-01-01"), 8, "A Description");

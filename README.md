@@ -6,10 +6,7 @@ tasks, as well as sort and filter them based on different criteria.
 ## Open tasks
 
 - CSS details (Edit, Delete in List at non mobile view => Fuck Flex)
-- Font sizes
-- *Optional, if time*:
-    - Refactor JS code, extract some functions to make program flow more clear.
-    - Style 404 page.
+- Style 404 page.
 - Finally, make repository public and submit assignment.
 
 ## Features
