@@ -58,16 +58,20 @@ body {
     width: 100%;
     border-top: 1px solid black;
 }
-.page-not-found{
+
+.page-not-found {
     display: flex;
     flex-direction: column;
 }
-.page-not-found-text{
+
+.page-not-found-text {
     padding: 10px;
 }
-.page-not-found-meme{
+
+.page-not-found-meme {
     display: flex;
 }
+
 .page-not-found-meme img {
     padding: 20px;
     max-width: 400px;
@@ -392,7 +396,7 @@ label.importance:before {
         flex: none;
     }
 
-    .todo-list-item-controls>form>.custom-button{
+    .todo-list-item-controls > form > .custom-button {
         flex: max-content;
     }
 }

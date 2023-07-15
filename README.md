@@ -3,9 +3,6 @@
 The Todo App is a simple application for managing and organizing tasks. It allows users to create, update, and delete
 tasks, as well as sort and filter them based on different criteria.
 
-## Open tasks
-- Finally, make repository public and submit assignment.
-
 ## Features
 
 - Create new tasks with a title, due date, importance level, and description.
@@ -15,6 +12,7 @@ tasks, as well as sort and filter them based on different criteria.
 - Sort tasks by title, due date, creation date, or importance.
 - Filter tasks to show only open tasks or show all tasks.
 - Toggle between dark mode and bright mode for better user experience.
+- Shows progress in percentage in app header.
 
 ## Development
 
@@ -30,8 +28,6 @@ tasks, as well as sort and filter them based on different criteria.
 - Make sure the required dependencies are installed using the command npm install.
 - Run the command `npm test` to execute the tests.
 - Check the test results to ensure all the tests pass successfully.
-
-DESCRIPTION OF TEST SETUP HERE; WHAT ARE THEY TESTING; HOW TO RUN THEM?
 
 ## License
 

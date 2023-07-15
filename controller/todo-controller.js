@@ -110,7 +110,7 @@ export class TodoController {
     };
 
     deleteTodo = async (req, res) => {
-        res.json(await todoStore.delete(req.params.id)); // TODO should return 402 if not ok
+        res.json(await todoStore.delete(req.params.id));
     };
 }
 
